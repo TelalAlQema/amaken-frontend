@@ -30,6 +30,7 @@ export default function AdminPinPage() {
       } else {
         setError(data.error?.message || "Invalid PIN. Please try again.");
       }
+      
     } catch {
       setError("Invalid PIN. Please try again.");
     } finally {
