@@ -60,7 +60,7 @@ export default function EditAboutPage() {
 
   if (fetching) {
     return (
-      <div className="bg-gray-50 p-6 min-h-screen">
+      <div className="bg-gray-50 min-h-screen">
         <div className="rounded-xl bg-white shadow-sm border border-gray-100 p-6">
           <div className="space-y-4">
             <div className="h-5 w-48 animate-pulse rounded bg-gray-200" />
@@ -74,7 +74,7 @@ export default function EditAboutPage() {
 
   if (!aboutItem) {
     return (
-      <div className="bg-gray-50 p-6 min-h-screen">
+      <div className="bg-gray-50 min-h-screen">
         <div className="rounded-xl bg-white shadow-sm border border-gray-100 p-12 text-center">
           <p className="text-sm text-gray-500">About content not found.</p>
           <Link
@@ -90,7 +90,7 @@ export default function EditAboutPage() {
   }
 
   return (
-    <div className="bg-gray-50 p-6 min-h-screen">
+    <div className="bg-gray-50 min-h-screen">
       <div className="mb-6">
         <Link
           href="/admin/about"
@@ -135,11 +135,11 @@ export default function EditAboutPage() {
               Image <span className="text-gray-400">(optional)</span>
             </label>
             {preview ? (
-              <div className="relative inline-block">
+              <div className="relative inline-block max-w-full align-top">
                 <img
                   src={preview}
                   alt="Preview"
-                  className="h-40 rounded-lg object-cover"
+                  className="h-40 max-w-full rounded-lg object-cover"
                 />
                 <button
                   onClick={() => {
@@ -165,18 +165,18 @@ export default function EditAboutPage() {
             )}
           </div>
 
-          <div className="flex items-center gap-3 border-t border-gray-100 pt-6">
+          <div className="flex flex-col-reverse gap-3 border-t border-gray-100 pt-6 sm:flex-row sm:items-center">
             <button
               onClick={() => mutation.mutate()}
               disabled={!content || mutation.isPending}
-              className="inline-flex items-center gap-2 rounded-lg bg-[#17c788] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#15b078] disabled:opacity-50"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#17c788] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#15b078] disabled:opacity-50 sm:w-auto sm:justify-start"
             >
               <Upload className="h-4 w-4" />
               {mutation.isPending ? "Saving..." : "Save Changes"}
             </button>
             <Link
               href="/admin/about"
-              className="rounded-lg border border-gray-200 px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              className="w-full rounded-lg border border-gray-200 px-5 py-2.5 text-center text-sm font-medium text-gray-700 hover:bg-gray-50 sm:w-auto"
             >
               Cancel
             </Link>

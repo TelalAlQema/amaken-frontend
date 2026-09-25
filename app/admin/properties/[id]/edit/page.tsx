@@ -203,7 +203,7 @@ export default function EditPropertyPage() {
 
   if (isLoading || !formReady) {
     return (
-      <div className="bg-gray-50 p-6 min-h-screen">
+      <div className="bg-gray-50 min-h-screen">
         <div className="space-y-4">
           <div className="h-8 w-48 animate-pulse rounded bg-gray-200" />
           <div className="h-64 animate-pulse rounded-xl bg-gray-200" />
@@ -214,7 +214,7 @@ export default function EditPropertyPage() {
 
   if (!property) {
     return (
-      <div className="bg-gray-50 p-6 min-h-screen">
+      <div className="bg-gray-50 min-h-screen">
         <p className="text-gray-500">Property not found.</p>
       </div>
     );
@@ -231,7 +231,7 @@ export default function EditPropertyPage() {
   const progress = ((step + 1) / STEPS.length) * 100;
 
   return (
-    <div className="bg-gray-50 p-6 min-h-screen">
+    <div className="bg-gray-50 min-h-screen">
       <div className="mb-6">
         <Link
           href={`/admin/properties/${id}`}
@@ -258,14 +258,16 @@ export default function EditPropertyPage() {
               style={{ width: `${progress}%` }}
             />
           </div>
-          <div className="mt-2 flex justify-between">
+          <div className="mt-2 flex flex-wrap justify-between gap-x-2 gap-y-1">
             {STEPS.map((s, i) => (
               <button
                 key={s}
                 onClick={() => setStep(i)}
-                className={`text-xs ${i === step ? "font-semibold text-[#17c788]" : "text-gray-400"}`}
+                aria-current={i === step ? "step" : undefined}
+                className={`min-w-0 text-xs ${i === step ? "font-semibold text-[#17c788]" : "text-gray-400"}`}
               >
-                {s}
+                <span className="hidden sm:inline">{s}</span>
+                <span className="sm:hidden">{i + 1}</span>
               </button>
             ))}
           </div>
@@ -437,11 +439,11 @@ export default function EditPropertyPage() {
         </div>
 
         {/* Navigation */}
-        <div className="mt-8 flex items-center justify-between border-t border-gray-100 pt-6">
+        <div className="mt-8 flex flex-col-reverse gap-3 border-t border-gray-100 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <button
             onClick={() => setStep((s) => s - 1)}
             disabled={step === 0}
-            className="flex items-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 disabled:opacity-40"
+            className="flex w-full items-center justify-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 disabled:opacity-40 sm:w-auto sm:justify-start"
           >
             <ArrowLeft className="h-4 w-4" />
             Previous
@@ -450,7 +452,7 @@ export default function EditPropertyPage() {
           {step < STEPS.length - 1 ? (
             <button
               onClick={() => setStep((s) => s + 1)}
-              className="flex items-center gap-2 rounded-lg bg-[#0d1432] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a2248]"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#0d1432] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a2248] sm:w-auto"
             >
               Next
               <ArrowRight className="h-4 w-4" />
@@ -459,7 +461,7 @@ export default function EditPropertyPage() {
             <button
               onClick={() => mutation.mutate()}
               disabled={mutation.isPending}
-              className="flex items-center gap-2 rounded-lg bg-[#17c788] px-4 py-2 text-sm font-medium text-white hover:bg-[#14b077] disabled:opacity-50"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#17c788] px-4 py-2 text-sm font-medium text-white hover:bg-[#14b077] disabled:opacity-50 sm:w-auto"
             >
               <Save className="h-4 w-4" />
               {mutation.isPending ? "Saving..." : "Save Changes"}
