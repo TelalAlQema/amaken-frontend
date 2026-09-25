@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #0E1033;
+  --color-primary-tint: #3B3E66;
+  --color-primary-dark: #0A0B26;
+  --color-secondary: #D7BC3B;
+  --color-secondary-tint: #E8D687;
+  --color-secondary-shade: #B89A2A;
+  --color-text: #231F20;
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F5F5F5;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body antialiased;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+    color: var(--color-primary);
+  }
+
+  img {
+    @apply max-w-full;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-secondary-shade);
+  }
+  .btn-primary:focus {
+    ring-color: var(--color-secondary);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold text-white transition-all focus:outline-none focus:ring-2 focus:ring-offset-2;
+    background-color: var(--color-primary);
+  }
+  .btn-secondary:hover {
+    background-color: var(--color-primary-tint);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-lg border-2 px-6 py-3 text-sm font-semibold transition-all;
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+  }
+  .btn-outline:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border px-4 py-3 text-sm focus:outline-none focus:ring-2;
+    border-color: #d1d5db;
+  }
+  .input-field:focus {
+    border-color: var(--color-secondary);
+    ring-color: rgba(215, 188, 59, 0.2);
+  }
+
+  .select-field {
+    @apply w-full rounded-lg border bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2;
+    border-color: #d1d5db;
+  }
+  .select-field:focus {
+    border-color: var(--color-secondary);
+    ring-color: rgba(215, 188, 59, 0.2);
+  }
+
+  .card {
+    @apply rounded-lg shadow-md transition-shadow hover:shadow-lg;
+    background-color: var(--color-bg);
+  }
+
+  .container-custom {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-heading {
+    @apply mb-8 text-center text-3xl font-bold;
+    color: var(--color-primary);
+  }
+
+  .section-subheading {
+    @apply mb-12 text-center;
+    color: var(--color-text);
+    opacity: 0.7;
+  }
+
+  .page-banner {
+    @apply relative flex min-h-[260px] items-center bg-cover bg-center py-16 md:min-h-[320px];
+    background-color: var(--color-primary);
+  }
+
+  .flaticon {
+    @apply inline-flex items-center justify-center leading-none;
+    font-family: 'Flaticon', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  .flaticon-seller::before { content: "\f10a"; }
+  .flaticon-rent::before { content: "\f105"; }
+  .flaticon-list::before { content: "\f107"; }
+  .flaticon-pin::before { content: "\f10e"; }
+  .flaticon-medal::before { content: "\f122"; }
+  .flaticon-reward::before { content: "\f108"; }
+  .flaticon-user::before { content: "\f123"; }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Loading spinner */
+  .loading-spinner {
+    @apply inline-block h-5 w-5 animate-spin rounded-full border-2 border-current border-r-transparent;
+  }
+
+  /* Focus visible ring for keyboard navigation */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2;
+    outline-color: var(--color-secondary);
+  }
+
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Flaticon font */
+@font-face {
+  font-family: 'Flaticon';
+  src: url('/fonts/flaticon/Flaticond41d.html?#iefix') format('embedded-opentype'),
+       url('/fonts/flaticon/Flaticon-2.html') format('woff2'),
+       url('/fonts/flaticon/Flaticon-3.html') format('woff'),
+       url('/fonts/flaticon/Flaticon-4.html') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-tint);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
