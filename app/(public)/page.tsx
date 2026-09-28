@@ -87,25 +87,24 @@ export default function HomePage() {
         className="relative flex min-h-[540px] items-center bg-cover bg-center md:h-[70vh] md:min-h-[600px]"
         style={{ backgroundImage: "url('/images/banner/main.png')" }}
       >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-navy/60" />
+        {/* Left-side content overlay */}
+        <div className="absolute left-0 top-1/2 w-[38vw] -translate-y-1/2 bg-navy/60 rounded-tr-[200px] rounded-br-[200px]">
+          <div className="px-6 py-10 sm:px-8 sm:py-12 md:px-12 md:py-14">
+            <div className="max-w-3xl">
+              <h1 className="mb-4 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+                <span className="text-secondary pr-4">
+                  Let us Help You Find
+                </span>
+                Your Dream Home
+              </h1>
 
-        <div className="container-custom relative z-10 py-10 sm:py-14 md:py-20">
-          <div className="max-w-3xl">
-            <h1 className="mb-4 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-              <span className="text-secondary">Let us Help You Find</span> Your Dream Home
-            </h1>
-            <p className="mb-8 text-lg text-gray-200">
-              Your trusted partner in finding the perfect property in Dubai and the UAE. We offer the best deals on villas, apartments, and commercial properties.
-            </p>
+              <p className="mb-8 text-lg text-gray-200">
+                Your trusted partner in finding the perfect property in Dubai and
+                the UAE. We offer the best deals on villas, apartments, and
+                commercial properties.
+              </p>
 
-            <div className="flex flex-wrap gap-3">
-              <Link href="/properties" className="btn-primary">
-                Browse Properties
-              </Link>
-              <Link href="/submit-property" className="btn-outline">
-                Submit Property
-              </Link>
+            
             </div>
           </div>
         </div>
@@ -237,50 +236,50 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-    <section
-  className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-cover bg-center py-12 sm:py-16"
-  style={{ backgroundImage: "url('/images/1.png')" }}
->
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-primary/10" />
+      <section
+        className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-cover bg-center py-12 sm:py-16"
+        style={{ backgroundImage: "url('/images/1.png')" }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-primary/10" />
 
-  {/* Centered Content */}
-  <div className="container-custom relative z-10 w-full">
-    <div className="text-center">
+        {/* Centered Content */}
+        <div className="container-custom relative z-10 w-full">
+          <div className="text-center">
 
-      {/* Heading */}
-      <h2 className="section-heading mb-10 text-secondary">
-        Why Choose Us
-      </h2>
+            {/* Heading */}
+            <h2 className="section-heading mb-10 text-secondary">
+              Why Choose Us
+            </h2>
 
-      {/* Cards */}
-      <div className="grid gap-8 sm:grid-cols-3">
-        {WHY_CHOOSE_US.map((item, i) => (
-          <div
-            key={i}
-            className="card bg-navy/60 p-8 text-center backdrop-blur-xs"
-          >
-            <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/20 text-3xl text-secondary">
-              <span
-                className={`flaticon ${item.icon}`}
-                aria-hidden="true"
-              />
+            {/* Cards */}
+            <div className="grid gap-8 sm:grid-cols-3">
+              {WHY_CHOOSE_US.map((item, i) => (
+                <div
+                  key={i}
+                  className="card bg-navy/60 p-8 text-center backdrop-blur-xs"
+                >
+                  <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/20 text-3xl text-secondary">
+                    <span
+                      className={`flaticon ${item.icon}`}
+                      aria-hidden="true"
+                    />
+                  </div>
+
+                  <h3 className="mb-2 text-lg font-semibold text-secondary">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-200">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
             </div>
 
-            <h3 className="mb-2 text-lg font-semibold text-secondary">
-              {item.title}
-            </h3>
-
-            <p className="text-sm text-gray-200">
-              {item.desc}
-            </p>
           </div>
-        ))}
-      </div>
-
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* How It Works */}
       <section className="py-12 sm:py-16">
